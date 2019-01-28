@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 path = "C:/Users/OrdiPaul/Documents/Mines Nancy/Projet/Projet3A_wastesorting/dataset/"
 
 # creation des descripteurs
-des_train, des_test, Y_train, Y_test, X_image_test = descriptors(path, lib="SURF")
+des_train, des_test, Y_train, Y_test, X_image_test = descriptors(path, lib="SURF", nb_class=6)
 
 step = 0.1
 list_nwords = np.arange(0.6, 4.3, step)
@@ -23,10 +23,12 @@ for p in list_nwords:
 
     list_inertia.append(KMeans.inertia_)
 
+list_nwords=10**list_nwords
+
 plt.figure()
 plt.plot(list_nwords, list_inertia, 'b-o')
 plt.title('Elbowplot')
-plt.xlabel('log10(n_words)')
+plt.xlabel('n_words')
 plt.ylabel('Inertia')
 plt.show()
 

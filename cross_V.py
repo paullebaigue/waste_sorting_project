@@ -7,6 +7,8 @@ import matplotlib.colors as colors
 from sklearn import svm, model_selection, neural_network, neighbors, metrics, cluster, preprocessing
 from sklearn.metrics.pairwise import chi2_kernel
 from image_SVM_classifier import train_generation, test_generation, learn_SVM
+import multiprocessing
+from joblib import Parallel, delayed
 
 
 path = "C:/Users/OrdiPaul/Documents/Mines Nancy/Projet/Projet3A_wastesorting/dataset/"
@@ -54,7 +56,7 @@ def K_fold_cv_split(data_base, nb_fold=10):
 # print(Y_train)
 
 
-
+# TODO: parloop
 def descriptors_CV(path, nb_class=6, lib="SURF"):
     """creation des descripteurs a partir des images
     INPUT : chemin d'acces
@@ -75,7 +77,7 @@ def descriptors_CV(path, nb_class=6, lib="SURF"):
 
     classe = 0
     # on parcourt toutes les images du fichier
-    for directory in os.listdir(path)[:nb_class]:
+    for directory in os.listdir(path)[6-nb_class:]:
         classe += 1
         print("classe %d : %s" % (classe, directory))
 
@@ -102,44 +104,59 @@ def descriptors_CV(path, nb_class=6, lib="SURF"):
     print("--- Done")
     return list_descriptors_cv, list_Y_cv
 
-def score_CV(list_descriptors_cv, list_Y_cv, nb_fold=10, C=1, n_words=100, print_result=False):
 
-    database_descriptors = (list_descriptors_cv, list_Y_cv)
+def score_CV(list_kmeans, list_train_sets, list_test_sets, nb_fold=5, C=1, print_result=False):
 
-    list_train_sets, list_test_sets = K_fold_cv_split(database_descriptors, nb_fold=nb_fold)
 
-    assert nb_fold == len(list_train_sets)
+    assert nb_fold == len(list_kmeans)
 
-    sum_score = 0
     list_score = []
     for k in range(nb_fold):
 
         [descriptor_train, Y_train] = np.transpose(list_train_sets[k])
         [descriptor_test, Y_test] = np.transpose(list_test_sets[k])
+        KMeans = list_kmeans[k]
 
-        # clustering par unsupervised-learning, creation du vocabulaire
-        KMeans = cluster.MiniBatchKMeans(n_clusters=n_words, init_size=3 * n_words,
-                                         n_init=5)  # utiliser MiniBatchKmeans plutôt que KMeans
-        train_conc = np.concatenate(descriptor_train)
-        KMeans.fit(train_conc)
+        # # clustering par unsupervised-learning, creation du vocabulaire
+        # KMeans = cluster.MiniBatchKMeans(n_clusters=n_words, init_size=3 * n_words,
+        #                                  n_init=5)  # utiliser MiniBatchKmeans plutôt que KMeans
+        # train_conc = np.concatenate(descriptor_train)
+        # KMeans.fit(train_conc)
 
         X_train = train_generation(descriptor_train, KMeans)
         Y_train = list(Y_train)
         Y_test = list(Y_test)
         X_test = test_generation(descriptor_test, KMeans)
-        score_k = learn_SVM(X_train, X_test, Y_train, Y_test, "no_X_img", kernel=chi2_kernel, C=C, print_result=print_result)
-        sum_score += score_k
+        score_k = learn_SVM(X_train, X_test, Y_train, Y_test, "no_X_img", kernel=chi2_kernel, C=C,
+                            print_result=print_result)
         list_score.append(score_k)
-        #if print_result:
+        # if print_result:
         print("score-%d = %.4f " %(k+1, score_k))
 
-    score = sum_score / nb_fold
-
-    var = sum((np.array(list_score) - score)**2)
+    score = np.mean(list_score)
+    var = np.var(list_score)
 
     return score, var
 
+
+def wrap_kmeans(list_train_sets, n_words):
+    def kmeans_k(k):
+        [descriptor_train, Y_train] = np.transpose(list_train_sets[k])
+
+        kmeans = cluster.MiniBatchKMeans(n_clusters=n_words, init_size=3 * n_words, n_init=10)
+        train_conc = np.concatenate(descriptor_train)
+        kmeans.fit(train_conc)
+        return kmeans
+    return kmeans_k
+
+
+def kmeans_cv(nb_fold, list_train_sets, n_words):
+        num_cores = 2
+        kmeans_k = wrap_kmeans(list_train_sets, n_words)
+        list_kmeans = Parallel(n_jobs=num_cores)(delayed(kmeans_k)(k) for k in range(nb_fold))
+        return list_kmeans
+
 if __name__ == '__main__':
-    list_descriptors_cv, list_Y_cv = descriptors_CV(path, nb_class=6)
-    print("score CV : ", score_CV(list_descriptors_cv, list_Y_cv, nb_fold=5, C=10, n_words=300, print_result=True))
+    list_descriptors_cv, list_Y_cv = descriptors_CV(path, nb_class=2)
+    print("score CV : ", np.around(score_CV(list_kmeans, nb_fold=5, C=10, print_result=True),4))
 

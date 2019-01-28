@@ -6,8 +6,10 @@ import cv2
 import matplotlib.pyplot as plt
 import matplotlib.colors as colors
 
+
+
 if __name__ == '__main__':
-    from cross_V import descriptors_CV, score_CV
+    from cross_V import descriptors_CV, score_CV, K_fold_cv_split, kmeans_cv
 
 path = "C:/Users/OrdiPaul/Documents/Mines Nancy/Projet/Projet3A_wastesorting/dataset/"
 
@@ -52,7 +54,7 @@ def descriptors(path, test_proportion=0.1, nb_class=6, lib="SURF"):
 
     classe = 0
     # on parcourt toutes les images du fichier
-    for directory in os.listdir(path)[:nb_class]:
+    for directory in os.listdir(path)[6-nb_class:]:
         classe += 1
         print("classe %d : %s" % (classe, directory))
 
@@ -114,6 +116,7 @@ def train_generation(descriptors_train, KMeans):
         # on ajoute ensuite les mots correspondants aux descripteurs
         associated_word = \
             KMeans.labels_[start:start + nb_des]
+
         # KMeans.predict(descriptors_img)
         # # on indente l'indice de debut de la liste de descripteurs pour passer au mot suivant
         start += nb_des
@@ -249,7 +252,7 @@ def score_colormap_C_gamma(path, n_words=100, test_proportion=0.1):
     plt.show()
 
 
-def score_colormap_C_nwords(path):
+def score_colormap_C_nwords(path, nb_fold=5):
     """try to find the best parameters n_words and C the same time
     I use here a color map representing the score"""
     print("### score_colormap")
@@ -260,12 +263,18 @@ def score_colormap_C_nwords(path):
 
     score_chi2 = []
     variance_chi2 = []
-    list_C = np.linspace(-2, 4, 25)
 
-    list_nwords = np.linspace(1, 5, 17)
+    list_C = np.linspace(0, 4, 17)
+    list_nwords = np.linspace(500, 3000, 11)
+
+    database_descriptors = (list_descriptors_cv, list_Y_cv)
+    list_train_sets, list_test_sets = K_fold_cv_split(database_descriptors, nb_fold=nb_fold)
+
     for n in list_nwords:
-        n_words = int(10 ** n)
+        n_words = int(n)
         print("__________________________ n_words =", n_words)
+
+        list_kmeans = kmeans_cv(nb_fold, list_train_sets, n_words)
 
         # # clustering par unsupervised-learning, creation du vocabulaire
         # KMeans = cluster.MiniBatchKMeans(n_clusters=n_words, init_size=3 * n_words,
@@ -284,17 +293,18 @@ def score_colormap_C_nwords(path):
             C = 10 ** p
             print("C = %.2f" %C)
 
-            S,V = score_CV(list_descriptors_cv, list_Y_cv, nb_fold=5, C=C, n_words=n_words)
+            S,V = score_CV(list_kmeans, list_train_sets, list_test_sets, nb_fold=5, C=C)
             # S = learn_SVM(X_train, X_test, Y_train, Y_test, kernel=chi2_kernel, C=C, print_result=True)
             S_chi.append(S)
             V_chi.append(V)
             # gamma is chosen automatically
 
         score_chi2.append(S_chi)
-        variance_chi2.append(np.sqrt(V_chi))
+        variance_chi2.append(V_chi)
 
-    # list_nwords = 10 ** np.array(list_nwords)
     # list_C = 10 ** np.array(list_C)
+
+    std_chi2 = np.sqrt(variance_chi2)
 
     fig = plt.figure(1)
 
@@ -306,7 +316,7 @@ def score_colormap_C_nwords(path):
     plt.colorbar()
 
     ax2 = fig.add_subplot(122)
-    plt.pcolormesh(list_C, list_nwords, variance_chi2, cmap='RdBu_r', norm=colors.LogNorm(), shading='gouraud')
+    plt.pcolormesh(list_C, list_nwords, std_chi2, cmap='RdBu_r', norm=colors.LogNorm(), shading='gouraud')
     ax2.title.set_text("chi2 std")
     plt.xlabel("log10(C)")
     plt.ylabel("log10(n_words)")
@@ -322,7 +332,7 @@ def score_colormap_C_nwords(path):
     plt.colorbar()
 
     ax4 = fig2.add_subplot(122)
-    plt.pcolor(list_C, list_nwords, variance_chi2, cmap='RdBu_r', norm=colors.LogNorm())
+    plt.pcolor(list_C, list_nwords, std_chi2, cmap='RdBu_r', norm=colors.LogNorm())
     ax4.title.set_text("chi2 std")
     plt.xlabel("log10(C)")
     plt.ylabel("log10(n_words)")

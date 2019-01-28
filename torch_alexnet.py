@@ -51,12 +51,12 @@ path = "C:/Users/OrdiPaul/Documents/Mines Nancy/Projet/Projet3A_wastesorting/dat
 
 image_datasets = {x: datasets.ImageFolder(os.path.join(path, x),
                                           data_transforms[x]) for x in ['train', 'val']}
-
 dataloaders = {x: torch.utils.data.DataLoader(image_datasets[x], batch_size=50,
                                              shuffle=True, num_workers=4) for x in ['train', 'val']}
 
 dataset_sizes = {x: len(image_datasets[x]) for x in ['train', 'val']}
 class_names = image_datasets['train'].classes
+
 nb_classes = len(class_names)
 #print('nb_classes =', nb_classes)
 
