@@ -313,14 +313,14 @@ def score_colormap_C_nwords(path, nb_fold=5):
     ax1.title.set_text("chi2 score")
     plt.xlabel("log10(C)")
     plt.ylabel("log10(n_words)")
-    plt.colorbar()
+    plt.colorbar(pad=0.01)
 
     ax2 = fig.add_subplot(122)
     plt.pcolormesh(list_C, list_nwords, std_chi2, cmap='RdBu_r', norm=colors.LogNorm(), shading='gouraud')
     ax2.title.set_text("chi2 std")
     plt.xlabel("log10(C)")
     plt.ylabel("log10(n_words)")
-    plt.colorbar()
+    plt.colorbar(pad=0.01)
 
     fig2 = plt.figure(2)
 

@@ -143,7 +143,7 @@ def wrap_kmeans(list_train_sets, n_words):
     def kmeans_k(k):
         [descriptor_train, Y_train] = np.transpose(list_train_sets[k])
 
-        kmeans = cluster.MiniBatchKMeans(n_clusters=n_words, init_size=3 * n_words, n_init=10)
+        kmeans = cluster.MiniBatchKMeans(n_clusters=n_words, init_size=3 * n_words, n_init=30)
         train_conc = np.concatenate(descriptor_train)
         kmeans.fit(train_conc)
         return kmeans
