@@ -7,8 +7,6 @@ import matplotlib.pyplot as plt
 import matplotlib.colors as colors
 import seaborn as sns
 
-
-
 if __name__ == '__main__':
     from cross_V import descriptors_CV, score_CV, K_fold_cv_split, kmeans_cv
 
@@ -125,8 +123,6 @@ def train_generation(descriptors_train, KMeans):
             words_histogram[word] += 1/nb_des # pour normaliser la somme a 1
 
         X_train.append(words_histogram)
-
-    #print("--- Done")
     return X_train
 
 
@@ -155,7 +151,6 @@ def test_generation(descriptors_test, KMeans):
 
         X_test.append(words_histogram)
 
-    #print("---Done")
     return X_test
 
 
@@ -391,7 +386,7 @@ def SVM_model_CV(path, n_words=1000, C=1, gamma=None, kernel='linear', n_fold=5)
     print(score, variance)
     print(TCM)
 
-    os.system('pause')
+    #os.system('pause')
     normed_TCM = TCM/np.sum(TCM, axis=1)
     class_names = os.listdir(path)
     print(class_names)
