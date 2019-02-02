@@ -223,7 +223,8 @@ def train_AlexNet_cv(dataset, n_epoch=10, n_classe=6, n_fold=5, deep_model=model
         print(20*".")
         print('Fold %i/%i' %(k+1, n_fold))
         print(20*".")
-        model, val_acc, conf_matrix = train_model_cv(subdataset[k], k=k, num_epochs=n_epoch, n_classe=n_classe)
+        model, val_acc, conf_matrix = train_model_cv(subdataset[k], k=k, num_epochs=n_epoch,
+                                                     n_classe=n_classe, deep_model=deep_model)
 
         list_acc.append(val_acc)
         list_mat.append(conf_matrix)
@@ -244,7 +245,9 @@ if __name__ == '__main__':
     n_classe = len(class_names)
 
     list_acc, list_matrix = train_AlexNet_cv(image_datasets,
-                                             n_classe=n_classe, n_epoch=N_EPOCH, n_fold=N_FOLD, pretrained=True)
+                                             n_classe=n_classe, n_epoch=N_EPOCH, n_fold=N_FOLD, pretrained=True,
+                                             deep_model=models.resnet50)
+
     total_conf_mat = np.sum(list_matrix, axis=0).astype(int)
     normed_TCM = total_conf_mat/np.sum(total_conf_mat, axis=1)
 
