@@ -1,10 +1,11 @@
 from sklearn import svm, model_selection, neural_network, neighbors, metrics, cluster, preprocessing
-from sklearn.metrics.pairwise import chi2_kernel
+from sklearn.metrics.pairwise import chi2_kernel, sigmoid_kernel, laplacian_kernel
 import numpy as np
 import os
 import cv2
 import matplotlib.pyplot as plt
 import matplotlib.colors as colors
+import seaborn as sns
 
 
 
@@ -161,14 +162,14 @@ def test_generation(descriptors_test, KMeans):
 # X_test = test_generation(descriptors_test, KMeans)
 
 
-def learn_SVM(X_train, X_test, Y_train, Y_test, X_image_test, kernel='linear', C=1, gamma=False,  print_result=False, display=False):
+def learn_SVM(X_train, X_test, Y_train, Y_test, X_image_test, kernel='linear', C=1, gamma=None,  print_result=True, display=False):
     """entraine un modele SVM a partir des donnes
     INPUT : listes train/test
     OUTPUT : score
     """
 
     # entrainement du modele SVM
-    if gamma != False:
+    if gamma is not None:
         SVM_model = svm.SVC(kernel=kernel, C=C, gamma=gamma)
     else:
         SVM_model = svm.SVC(kernel=kernel, C=C)
@@ -176,14 +177,21 @@ def learn_SVM(X_train, X_test, Y_train, Y_test, X_image_test, kernel='linear', C
     score = SVM_model.score(X_test, Y_test)
 
     if print_result:
-        print("score SVM %s %.3f ,  C = %.4f, gamma = %.5f" % (kernel, score, C, gamma))
+        if gamma is None:
+            print("score SVM %s %.3f ,  C = %.4f" % (kernel, score, C))
+        else:
+            print("score SVM %s %.3f ,  C = %.4f, gamma = %.5f" % (kernel, score, C, gamma))
         Y_test_pred = SVM_model.predict(X_test)
-        print(metrics.confusion_matrix(Y_test, Y_test_pred))
+        conf_matrix = metrics.confusion_matrix(Y_test, Y_test_pred)
+        print(conf_matrix)
 
         if display:
             display_false(X_image_test,Y_test,Y_test_pred)
 
-    return score
+    else:
+        conf_matrix=None
+
+    return score, conf_matrix
 
 
 def score_colormap_C_gamma(path, n_words=100, test_proportion=0.1):
@@ -206,44 +214,70 @@ def score_colormap_C_gamma(path, n_words=100, test_proportion=0.1):
     score_linear = []
     score_rbf = []
     score_chi2 = []
+    score_lap = []
+    score_max = 0
+    score_min = 1
 
-    list_C = np.linspace(1, 2, 3)
-    list_gamma = np.linspace(-2, 2, 2)
+    list_C = range(-4, 6)
+    list_gamma = range(-5, 5)
     for p in list_C:
         C = 10 ** p
 
         S_lin = []
         S_rbf = []
         S_chi = []
+        S_lap = []
 
         for q in list_gamma:
             gamma = 10 ** q
 
             S_lin.append(learn_SVM(X_train, X_test, Y_train, Y_test, X_image_test, kernel='linear', C=C))
             S_rbf.append(learn_SVM(X_train, X_test, Y_train, Y_test, X_image_test, kernel='rbf', gamma=gamma, C=C))
-            S_chi.append(learn_SVM(X_train, X_test, Y_train, Y_test, X_image_test, kernel=chi2_kernel, C=C, gamma=gamma, print_result=True, display=True))
+            S_chi.append(learn_SVM(X_train, X_test, Y_train, Y_test, X_image_test, kernel=chi2_kernel, C=C, gamma=gamma,
+                                   print_result=True, display=False))
+            S_lap.append(learn_SVM(X_train, X_test, Y_train, Y_test, X_image_test, kernel=laplacian_kernel, C=C, gamma=gamma,
+                                   print_result=True, display=False))
+
+            for list_score in [S_chi,S_lin, S_rbf, S_lap]:
+                if max(list_score) > score_max:
+                    score_max = max(list_score)
+                if min(list_score) < score_min:
+                    score_min = min(list_score)
+
 
         score_linear.append(S_lin)
         score_rbf.append(S_rbf)
         score_chi2.append(S_chi)
+        score_lap.append(S_lap)
 
     plt.subplot(2,2,1)
-    plt.pcolor(list_C, list_gamma, np.transpose(score_linear), cmap='RdBu_r')
+    plt.pcolor(list_C, list_gamma, np.transpose(score_linear), cmap='RdBu_r', norm=colors.LogNorm()
+               , vmax=score_max, vmin=score_min)
     plt.title("linear")
     plt.xlabel("log(C)")
     plt.ylabel("log(gamma)")
     plt.colorbar()
 
     plt.subplot(2,2,2)
-    plt.pcolor(list_C, list_gamma, np.transpose(score_rbf), cmap='RdBu_r')
+    plt.pcolor(list_C, list_gamma, np.transpose(score_rbf), cmap='RdBu_r', norm=colors.LogNorm(),
+               vmax=score_max, vmin=score_min)
     plt.title("rbf")
     plt.xlabel("log(C)")
     plt.ylabel("log(gamma)")
     plt.colorbar()
 
     plt.subplot(2,2,3)
-    plt.pcolor(list_C, list_gamma, np.transpose(score_chi2), cmap='RdBu_r')
+    plt.pcolor(list_C, list_gamma, np.transpose(score_chi2), cmap='RdBu_r', norm=colors.LogNorm(),
+               vmax=score_max, vmin=score_min)
     plt.title("chi2")
+    plt.xlabel("log(C)")
+    plt.ylabel("log(gamma)")
+    plt.colorbar()
+
+    plt.subplot(2,2,4)
+    plt.pcolor(list_C, list_gamma, np.transpose(score_lap), cmap='RdBu_r', norm=colors.LogNorm(),
+               vmax=score_max, vmin=score_min)
+    plt.title("laplacian")
     plt.xlabel("log(C)")
     plt.ylabel("log(gamma)")
     plt.colorbar()
@@ -257,7 +291,7 @@ def score_colormap_C_nwords(path, nb_fold=5):
     I use here a color map representing the score"""
     print("### score_colormap")
 
-    # creation des descripteurs
+    # creation des descripteurs pour de la CV
     list_descriptors_cv, list_Y_cv = descriptors_CV(path, nb_class=6)
     #des_train, des_test, Y_train, Y_test, X_image_test = descriptors(path, test_proportion, nb_class=6, lib="SURF")
 
@@ -340,6 +374,38 @@ def score_colormap_C_nwords(path, nb_fold=5):
 
     plt.show()
 
+def SVM_model_CV(path, n_words=1000, C=1, gamma=None, kernel='linear', n_fold=5):
+
+    # creation des descripteurs pour de la CV
+    list_descriptors_cv, list_Y_cv = descriptors_CV(path, nb_class=6)
+
+    database_descriptors = (list_descriptors_cv, list_Y_cv)
+    list_train_sets, list_test_sets = K_fold_cv_split(database_descriptors, nb_fold=n_fold)
+
+    # TODO: put n_init higher
+    list_kmeans = kmeans_cv(n_fold, list_train_sets, n_words, n_init=100)
+
+    score, variance, TCM = score_CV(list_kmeans, list_train_sets, list_test_sets,
+                                    nb_fold=n_fold, C=C, print_result=True)
+
+    print(score, variance)
+    print(TCM)
+
+    os.system('pause')
+    normed_TCM = TCM/np.sum(TCM, axis=1)
+    class_names = os.listdir(path)
+    print(class_names)
+
+    plt.figure(0)
+    plt.title("SVM total confusion matrix")
+    plot_conf_matrix = sns.heatmap(normed_TCM, annot=TCM, fmt="d", cmap='Blues',
+                                   xticklabels=class_names, yticklabels=class_names)
+    plt.xlabel('Predicted Class')
+    plt.ylabel('Real Class')
+    plt.show()
+
+
 if __name__ == '__main__':
-    score_colormap_C_nwords(path)
-    #score_colormap_C_gamma(path, n_words=300, test_proportion=0.1)
+    # score_colormap_C_nwords(path)
+    # score_colormap_C_gamma(path, n_words=1000, test_proportion=0.2)
+    SVM_model_CV(path, n_words=1000, C=4, gamma=None, n_fold=5)

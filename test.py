@@ -2,8 +2,9 @@
 # from skimage import io, transform
 import numpy as np
 import time
+import seaborn as sns
 import random as rd
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 # import os
 # import torch
 # import torchvision
@@ -71,13 +72,31 @@ def wrap_func(L):
 #     pool.join()
 #     print('done')
 
-import multiprocessing
-from joblib import Parallel, delayed
+# import multiprocessing
+# from joblib import Parallel, delayed
+#
+# inputs = range(10)
+# L=[]
+# num_cores = multiprocessing.cpu_count()
+# print("num_cores : ", num_cores)
+# list_result = Parallel(n_jobs=num_cores)(delayed(wrap_func(L))(i) for i in inputs)
+# N1,N2 = np.transpose(list_result)
+# print(N1,N2)
 
-inputs = range(10)
-L=[]
-num_cores = multiprocessing.cpu_count()
-print("num_cores : ", num_cores)
-list_result = Parallel(n_jobs=num_cores)(delayed(wrap_func(L))(i) for i in inputs)
-N1,N2 = np.transpose(list_result)
-print(N1,N2)
+matrix = np.array([[400.,2.,4.],[24.,450.,1.],[6.,54.,30.]])
+print(matrix)
+print(np.sum(matrix, axis=0))
+print(np.sum(matrix, axis=1))
+matrix = matrix.astype(int)
+print(matrix)
+normed_M = matrix/np.sum(matrix, axis=1)
+
+classe_name = ["plastic", "glass", "paper"]
+
+plt.figure(0)
+plt.title("AlexNet total confusion matrix")
+ax = sns.heatmap(normed_M, annot=matrix, fmt="d", cmap='Blues',
+                 xticklabels=classe_name, yticklabels=classe_name)
+plt.xlabel('predicted class')
+plt.ylabel('real class')
+plt.show()

@@ -111,6 +111,7 @@ def score_CV(list_kmeans, list_train_sets, list_test_sets, nb_fold=5, C=1, print
     assert nb_fold == len(list_kmeans)
 
     list_score = []
+    list_conf_matrix = []
     for k in range(nb_fold):
 
         [descriptor_train, Y_train] = np.transpose(list_train_sets[k])
@@ -127,32 +128,36 @@ def score_CV(list_kmeans, list_train_sets, list_test_sets, nb_fold=5, C=1, print
         Y_train = list(Y_train)
         Y_test = list(Y_test)
         X_test = test_generation(descriptor_test, KMeans)
-        score_k = learn_SVM(X_train, X_test, Y_train, Y_test, "no_X_img", kernel=chi2_kernel, C=C,
+        score_k, conf_matrix_k = learn_SVM(X_train, X_test, Y_train, Y_test, "no_X_img", kernel=chi2_kernel, C=C,
                             print_result=print_result)
         list_score.append(score_k)
+        list_conf_matrix.append(conf_matrix_k)
         # if print_result:
         print("score-%d = %.4f " %(k+1, score_k))
 
     score = np.mean(list_score)
     var = np.var(list_score)
 
-    return score, var
+    #print(list_conf_matrix)
+    TCM = np.sum(list_conf_matrix, axis=0)
+
+    return score, var, TCM
 
 
-def wrap_kmeans(list_train_sets, n_words):
+def wrap_kmeans(list_train_sets, n_words, n_init=10):
     def kmeans_k(k):
         [descriptor_train, Y_train] = np.transpose(list_train_sets[k])
 
-        kmeans = cluster.MiniBatchKMeans(n_clusters=n_words, init_size=3 * n_words, n_init=30)
+        kmeans = cluster.MiniBatchKMeans(n_clusters=n_words, init_size=5*n_words, n_init=n_init)
         train_conc = np.concatenate(descriptor_train)
         kmeans.fit(train_conc)
         return kmeans
     return kmeans_k
 
 
-def kmeans_cv(nb_fold, list_train_sets, n_words):
+def kmeans_cv(nb_fold, list_train_sets, n_words, n_init=10):
         num_cores = 2
-        kmeans_k = wrap_kmeans(list_train_sets, n_words)
+        kmeans_k = wrap_kmeans(list_train_sets, n_words, n_init=n_init)
         list_kmeans = Parallel(n_jobs=num_cores)(delayed(kmeans_k)(k) for k in range(nb_fold))
         return list_kmeans
 

@@ -23,7 +23,7 @@ class AlexNet(nn.Module):
             nn.Conv2d(3, 64, kernel_size=11, stride=4, padding=2),
             # 64x
             nn.ReLU(inplace=True),
-            nn.MaxPool2d(kernel_size=3, stride=2),
+            nn.MaxPool2d(kernel_size=3, stride=2, padding=0),
             #
             nn.Conv2d(64, 192, kernel_size=5, stride=1, padding=2),
             #

@@ -7,6 +7,7 @@ from torchvision import transforms, models, datasets
 import time
 import copy
 import matplotlib.pyplot as plt
+import seaborn as sns
 import os
 
 
@@ -31,7 +32,7 @@ def plot_epoch(epoch_list, train_acc, val_acc, train_loss, val_loss, k=0):
 # Just normalization for validation
 crop = transforms.RandomChoice([
     transforms.Compose([transforms.Resize(256), transforms.CenterCrop(224)]),
-    transforms.RandomResizedCrop(224)
+    transforms.RandomResizedCrop(224),
 ])
 
 
@@ -39,7 +40,7 @@ data_transforms = {
     'train': transforms.Compose([
         crop,
         transforms.RandomHorizontalFlip(),
-        transforms.RandomVerticalFlip(),
+        # transforms.RandomVerticalFlip(),
         transforms.ToTensor(),
         transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
     ]),
@@ -51,6 +52,7 @@ data_transforms = {
         transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
     ])
 }
+
 
 def datasets_K_fold_CV(dataset, transform_function=None, n_fold=5):
     n_images = len(dataset)
@@ -65,8 +67,8 @@ def datasets_K_fold_CV(dataset, transform_function=None, n_fold=5):
 
         if transform_function is not None:
             print("transformation of data in datasets_K_fold_CV")
-            train_k=[(transform_function["train"](image[0]), image[1]) for image in train_k_conc]
-            val_k=[(transform_function["val"](image[0]), image[1]) for image in list_subdataset[k]]
+            train_k = [(transform_function["train"](image[0]), image[1]) for image in train_k_conc]
+            val_k = [(transform_function["val"](image[0]), image[1]) for image in list_subdataset[k]]
 
         else:
             train_k = train_k_conc
@@ -98,13 +100,13 @@ def train_model_cv(data_k, deep_model=models.alexnet, n_classe=6, pretrained=Tru
     # Observe that all parameters are being optimized
     optimizer_ft = optim.SGD(model_ft.parameters(), lr=0.0005, momentum=0.9)
     # Decay LR by a factor of "gamma" every "step_size" epochs
-    exp_lr_scheduler = lr_scheduler.StepLR(optimizer_ft, step_size=7, gamma=0.1)
+    exp_lr_scheduler = lr_scheduler.StepLR(optimizer_ft, step_size=6, gamma=0.1)
 
     ##################################################################################
 
     since = time.time()
 
-    dataloaders = {x: torch.utils.data.DataLoader(data_k[x], batch_size=50,
+    dataloaders = {x: torch.utils.data.DataLoader(data_k[x], batch_size=30,
                                                   shuffle=True, num_workers=4) for x in ['train', 'val']}
 
     dataset_sizes = {x: len(data_k[x]) for x in ['train', 'val']}
@@ -134,7 +136,6 @@ def train_model_cv(data_k, deep_model=models.alexnet, n_classe=6, pretrained=Tru
 
             # Iterate over data.
             for inputs, labels in dataloaders[phase]:
-                #os.system("pause")
                 inputs = inputs.to(device)
                 labels = labels.to(device)
 
@@ -211,10 +212,10 @@ def confusion_matrix(model_ft, n_classe, dataloaders):
     return np.array(conf_matrix), accuracy_from_class, accuracy_to_class
 
 
-def train_AlexNet_cv(dataset, n_classe=6, n_fold=5, deep_model=models.alexnet, pretrained=True):
+def train_AlexNet_cv(dataset, n_epoch=10, n_classe=6, n_fold=5, deep_model=models.alexnet, pretrained=True):
 
-    subdataset = datasets_K_fold_CV(dataset, n_fold=n_fold)
-                                    #transform_function=data_transforms)
+    subdataset = datasets_K_fold_CV(dataset, n_fold=n_fold,
+                                    transform_function=data_transforms)
 
     list_acc = []
     list_mat = []
@@ -222,7 +223,7 @@ def train_AlexNet_cv(dataset, n_classe=6, n_fold=5, deep_model=models.alexnet, p
         print(20*".")
         print('Fold %i/%i' %(k+1, n_fold))
         print(20*".")
-        model, val_acc, conf_matrix = train_model_cv(subdataset[k], k=k, num_epochs=3, n_classe=n_classe)
+        model, val_acc, conf_matrix = train_model_cv(subdataset[k], k=k, num_epochs=n_epoch, n_classe=n_classe)
 
         list_acc.append(val_acc)
         list_mat.append(conf_matrix)
@@ -232,17 +233,28 @@ def train_AlexNet_cv(dataset, n_classe=6, n_fold=5, deep_model=models.alexnet, p
 
 if __name__ == '__main__':
     torch.cuda.empty_cache()
-    N_FOLD=2
+    N_FOLD = 5
+    N_EPOCH = 15
 
     path = "C:/Users/OrdiPaul/Documents/Mines Nancy/Projet/Projet3A_wastesorting/dataset/"
-    image_datasets = datasets.ImageFolder(path,
-                                          transform=data_transforms['val'])
+    # it seems that it is better with the same transformation for all than with a data augmentation on the training set
+    image_datasets = datasets.ImageFolder(path)
+                                          #transform=data_transforms['val'])
     class_names = image_datasets.classes
     n_classe = len(class_names)
 
-    list_acc, list_matrix = train_AlexNet_cv(image_datasets, n_classe=n_classe, n_fold=N_FOLD, pretrained=True)
+    list_acc, list_matrix = train_AlexNet_cv(image_datasets,
+                                             n_classe=n_classe, n_epoch=N_EPOCH, n_fold=N_FOLD, pretrained=True)
+    total_conf_mat = np.sum(list_matrix, axis=0).astype(int)
+    normed_TCM = total_conf_mat/np.sum(total_conf_mat, axis=1)
 
-    print("Cross Validation accuracy :", round(float(np.sum(list_acc)/N_FOLD),4))
-    print("Total confusion matrix : \n", np.sum(list_matrix, axis=0))
+    print("Cross Validation accuracy :", round(float(np.sum(list_acc)/N_FOLD), 4))
+    print("Total confusion matrix : \n", total_conf_mat)
 
+    plt.figure(0)
+    plt.title("AlexNet total confusion matrix")
+    plot_conf_matrix = sns.heatmap(normed_TCM, annot=total_conf_mat, fmt="d", cmap='Blues',
+                     xticklabels=class_names, yticklabels=class_names)
+    plt.xlabel('Predicted Class')
+    plt.ylabel('Real Class')
     plt.show()
