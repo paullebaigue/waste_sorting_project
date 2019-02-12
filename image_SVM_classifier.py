@@ -6,6 +6,7 @@ import cv2
 import matplotlib.pyplot as plt
 import matplotlib.colors as colors
 import seaborn as sns
+import random as rd
 
 if __name__ == '__main__':
     from cross_V import descriptors_CV, score_CV, K_fold_cv_split, kmeans_cv
@@ -18,16 +19,32 @@ def display_false(X_image_test, Y_test, Y_test_pred):
     plt.figure()
     c = 0
     n=0
-    while c<40:
+    while c<24:
         n+=1
         if Y_test_pred[n] != Y_test[n]:
             c+=1
             print(c)
-            plt.subplot(5, 8, c, xticks=[], yticks=[])
+            plt.subplot(4, 6, c, xticks=[], yticks=[])
             plt.imshow(X_image_test[n], cmap='gray')
             plt.text(0.1,0.1,str(classes[Y_test_pred[n]-1])+' / '+str(classes[Y_test[n]-1]),fontsize=6,bbox=dict(facecolor='red', alpha=1))
     plt.show()
 
+
+
+def display_(X_image_test, Y_test, Y_test_pred):
+    classes = ['cardboard', 'glass', 'metal', 'paper', 'plastic', 'trash']
+    plt.figure()
+    c=0
+    while c<40:
+        c += 1
+        n=rd.randint(0,500)
+        plt.subplot(5, 8, c, xticks=[], yticks=[])
+        plt.imshow(X_image_test[n], cmap='gray')
+        if Y_test_pred[n] != Y_test[n]:
+            plt.text(0.1,0.1,str(classes[Y_test_pred[n]-1]),fontsize=6,bbox=dict(facecolor='red', alpha=1))
+        else:
+            plt.text(0.1,0.1,str(classes[Y_test_pred[n]-1]),fontsize=6,bbox=dict(facecolor='white', alpha=1))
+    plt.show()
 
 def descriptors(path, test_proportion=0.1, nb_class=6, lib="SURF"):
     """creation des descripteurs a partir des images
@@ -64,10 +81,10 @@ def descriptors(path, test_proportion=0.1, nb_class=6, lib="SURF"):
 
             # ouverture de l'image et passage en niveau de gris
             img = plt.imread(path + directory + '/' + file)
-            img = np.mean(img, -1)
+            img_gray = np.mean(img, -1)
 
             # on transforme l'image en array dtype='uint8'
-            img_uint8 = np.uint8(img)
+            img_uint8 = np.uint8(img_gray)
 
             # les keypoints (coordonnées des patches) et descripteurs
             kp, des = extrac.detectAndCompute(img_uint8, None)
@@ -181,7 +198,7 @@ def learn_SVM(X_train, X_test, Y_train, Y_test, X_image_test, kernel='linear', C
         print(conf_matrix)
 
         if display:
-            display_false(X_image_test,Y_test,Y_test_pred)
+            display_(X_image_test,Y_test,Y_test_pred)
 
     else:
         conf_matrix=None
@@ -287,7 +304,7 @@ def score_colormap_C_nwords(path, nb_fold=5):
     print("### score_colormap")
 
     # creation des descripteurs pour de la CV
-    list_descriptors_cv, list_Y_cv = descriptors_CV(path, nb_class=6)
+    list_descriptors_cv, list_Y_cv, list_img = descriptors_CV(path, nb_class=6)
     #des_train, des_test, Y_train, Y_test, X_image_test = descriptors(path, test_proportion, nb_class=6, lib="SURF")
 
     score_chi2 = []
@@ -369,19 +386,44 @@ def score_colormap_C_nwords(path, nb_fold=5):
 
     plt.show()
 
-def SVM_model_CV(path, n_words=1000, C=1, gamma=None, kernel='linear', n_fold=5):
+
+def SVM_model_single(path, n_words=1000, C=1, gamma=None, kernel='linear',n_class=6, n_fold=5, init_cluster=100):
+    # creation des descripteurs
+    des_train, des_test, Y_train, Y_test, X_image_test = descriptors(path, 1/n_fold, lib="SURF", nb_class=n_class)
+
+    # clustering par unsupervised-learning, creation du vocabulaire
+    KMeans = cluster.MiniBatchKMeans(n_clusters=n_words, init_size=3 * n_words,
+                                     n_init=init_cluster)  # utiliser MiniBatchKmeans plutôt que KMeans
+    train_conc = np.concatenate(des_train)
+    KMeans.fit(train_conc)
+
+    # creation des jeux de test et d'entrainement
+    X_train = train_generation(des_train, KMeans)
+    X_test = test_generation(des_test, KMeans)
+
+    result = learn_SVM(X_train, X_test, Y_train, Y_test, X_image_test,
+                      kernel=kernel, gamma=gamma, C=C, display=True)
+
+    print('score : ', result[0])
+
+    print('confusion matrix : \n', result[1])
+
+    return result
+
+
+# TODO: optional arguments
+def SVM_model_CV(path, n_words=1000, C=1, gamma=None, kernel='linear',n_class=6, n_fold=5, init_cluster=100):
 
     # creation des descripteurs pour de la CV
-    list_descriptors_cv, list_Y_cv = descriptors_CV(path, nb_class=6)
+    list_descriptors_cv, list_Y_cv, list_img = descriptors_CV(path, nb_class=n_class)
 
     database_descriptors = (list_descriptors_cv, list_Y_cv)
     list_train_sets, list_test_sets = K_fold_cv_split(database_descriptors, nb_fold=n_fold)
 
-    # TODO: put n_init higher
-    list_kmeans = kmeans_cv(n_fold, list_train_sets, n_words, n_init=100)
+    list_kmeans = kmeans_cv(n_fold, list_train_sets, n_words, n_init=init_cluster)
 
     score, variance, TCM = score_CV(list_kmeans, list_train_sets, list_test_sets,
-                                    nb_fold=n_fold, C=C, print_result=True)
+                                    nb_fold=n_fold, C=C, print_result=True, display=False)
 
     print(score, variance)
     print(TCM)
@@ -403,4 +445,5 @@ def SVM_model_CV(path, n_words=1000, C=1, gamma=None, kernel='linear', n_fold=5)
 if __name__ == '__main__':
     # score_colormap_C_nwords(path)
     # score_colormap_C_gamma(path, n_words=1000, test_proportion=0.2)
-    SVM_model_CV(path, n_words=1000, C=4, gamma=None, n_fold=5)
+    # SVM_model_CV(path, n_words=1000, C=4, gamma=None, n_fold=2, n_class=2, init_cluster=1)
+    SVM_model_single(path, n_words=1000, C=4, gamma=None, kernel=chi2_kernel, n_class=6, n_fold=5, init_cluster=100)

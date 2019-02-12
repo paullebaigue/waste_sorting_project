@@ -74,6 +74,7 @@ def descriptors_CV(path, nb_class=6, lib="SURF"):
 
     list_descriptors_cv = []
     list_Y_cv = []
+    list_img = []
 
     classe = 0
     # on parcourt toutes les images du fichier
@@ -88,10 +89,10 @@ def descriptors_CV(path, nb_class=6, lib="SURF"):
 
             # ouverture de l'image et passage en niveau de gris
             img = plt.imread(path + directory + '/' + file)
-            img = np.mean(img, -1)
+            img_gray = np.mean(img, -1)
 
             # on transforme l'image en array dtype='uint8'
-            img_uint8 = np.uint8(img)
+            img_uint8 = np.uint8(img_gray)
 
             # les keypoints (coordonnées des patches) et descripteurs
             kp, des = extrac.detectAndCompute(img_uint8, None)
@@ -100,12 +101,14 @@ def descriptors_CV(path, nb_class=6, lib="SURF"):
             # creation des listes qui construiront la base d'apprentissage
             list_descriptors_cv.append(des)
             list_Y_cv.append(classe)
+            list_img.append(img)
 
     print("--- Done")
-    return list_descriptors_cv, list_Y_cv
+    return list_descriptors_cv, list_Y_cv, list_img
 
 
-def score_CV(list_kmeans, list_train_sets, list_test_sets, nb_fold=5, C=1, print_result=False):
+def score_CV(list_kmeans, list_train_sets, list_test_sets,
+             list_img='no_X_img_test', nb_fold=5, C=1, print_result=False, display=False):
 
 
     assert nb_fold == len(list_kmeans)
@@ -128,8 +131,8 @@ def score_CV(list_kmeans, list_train_sets, list_test_sets, nb_fold=5, C=1, print
         Y_train = list(Y_train)
         Y_test = list(Y_test)
         X_test = test_generation(descriptor_test, KMeans)
-        score_k, conf_matrix_k = learn_SVM(X_train, X_test, Y_train, Y_test, "no_X_img", kernel=chi2_kernel, C=C,
-                            print_result=print_result)
+        score_k, conf_matrix_k = learn_SVM(X_train, X_test, Y_train, Y_test, list_img, kernel=chi2_kernel, C=C,
+                            print_result=print_result, display=display)
         list_score.append(score_k)
         list_conf_matrix.append(conf_matrix_k)
         # if print_result:
@@ -162,6 +165,6 @@ def kmeans_cv(nb_fold, list_train_sets, n_words, n_init=10):
         return list_kmeans
 
 if __name__ == '__main__':
-    list_descriptors_cv, list_Y_cv = descriptors_CV(path, nb_class=2)
+    list_descriptors_cv, list_Y_cv, list_img = descriptors_CV(path, nb_class=2)
     print("score CV : ", np.around(score_CV(list_kmeans, nb_fold=5, C=10, print_result=True),4))
 

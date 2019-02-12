@@ -83,9 +83,9 @@ def datasets_K_fold_CV(dataset, transform_function=None, n_fold=5):
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 def train_model_cv(data_k, deep_model=models.alexnet, n_classe=6, pretrained=True, k=1, num_epochs=25):
-    model_ft = deep_model(pretrained=pretrained)
+    model = deep_model(pretrained=pretrained)
 
-    model_ft.classifier = nn.Sequential(
+    model.classifier = nn.Sequential(
         nn.Linear(256 * 6 * 6, 4096),
         nn.ReLU(inplace=True),
         nn.Dropout(),
@@ -94,24 +94,25 @@ def train_model_cv(data_k, deep_model=models.alexnet, n_classe=6, pretrained=Tru
         nn.Dropout(),
         nn.Linear(512, n_classe),
     )
-    model_ft = model_ft.to(device)
+    model = model.to(device)
 
     criterion = nn.CrossEntropyLoss()
     # Observe that all parameters are being optimized
-    optimizer_ft = optim.SGD(model_ft.parameters(), lr=0.0005, momentum=0.9)
+    optimizer_ft = optim.SGD(model.parameters(), lr=0.0002, momentum=0.9)
     # Decay LR by a factor of "gamma" every "step_size" epochs
-    exp_lr_scheduler = lr_scheduler.StepLR(optimizer_ft, step_size=6, gamma=0.1)
+    exp_lr_scheduler = lr_scheduler.StepLR(optimizer_ft, step_size=5, gamma=0.1)
 
     ##################################################################################
 
     since = time.time()
 
-    dataloaders = {x: torch.utils.data.DataLoader(data_k[x], batch_size=30,
+    dataloaders = {x: torch.utils.data.DataLoader(data_k[x], batch_size=3,
                                                   shuffle=True, num_workers=4) for x in ['train', 'val']}
 
     dataset_sizes = {x: len(data_k[x]) for x in ['train', 'val']}
-    best_model_wts = copy.deepcopy(model_ft.state_dict())
+    best_model_wts = copy.deepcopy(model.state_dict())
     best_acc = 0.0
+    best_loss = 10
     epoch_list = []
     train_loss = []
     val_loss = []
@@ -127,9 +128,9 @@ def train_model_cv(data_k, deep_model=models.alexnet, n_classe=6, pretrained=Tru
         for phase in ['train', 'val']:
             if phase == 'train':
                 exp_lr_scheduler.step()
-                model_ft.train()  # Set model to training mode
+                model.train()  # Set model to training mode
             else:
-                model_ft.eval()   # Set model to evaluate mode
+                model.eval()   # Set model to evaluate mode
 
             running_loss = 0.0
             running_corrects = 0
@@ -144,7 +145,7 @@ def train_model_cv(data_k, deep_model=models.alexnet, n_classe=6, pretrained=Tru
                 # forward
                 # track history if only in train
                 with torch.set_grad_enabled(phase == 'train'):
-                    outputs = model_ft(inputs)
+                    outputs = model(inputs)
                     _, preds = torch.max(outputs, 1)
                     loss = criterion(outputs, labels)
                     # backward + optimize only if in training phase
@@ -170,9 +171,10 @@ def train_model_cv(data_k, deep_model=models.alexnet, n_classe=6, pretrained=Tru
                 val_acc.append(epoch_acc)
 
             # deep copy the model
-            if phase == 'val' and epoch_acc > best_acc:
+            if phase == 'val' and epoch_acc > best_acc and epoch_loss < best_loss:
                 best_acc = epoch_acc
-                # best_model_wts = copy.deepcopy(model.state_dict())
+                best_loss = epoch_loss
+                best_model_wts = copy.deepcopy(model.state_dict())
 
         print()
 
@@ -183,11 +185,12 @@ def train_model_cv(data_k, deep_model=models.alexnet, n_classe=6, pretrained=Tru
         time_elapsed // 60, time_elapsed % 60))
     print('Best val Acc: {:4f} \n'.format(best_acc))
 
-    conf_matrix, accuracy_from_class, accuracy_to_class = confusion_matrix(model_ft, n_classe, dataloaders)
-
     # load best model weights
-    # model.load_state_dict(best_model_wts)
-    return model_ft, best_acc, conf_matrix
+    model.load_state_dict(best_model_wts)
+
+    conf_matrix, accuracy_from_class, accuracy_to_class = confusion_matrix(model, n_classe, dataloaders)
+
+    return model, best_acc, conf_matrix
 
 
 def confusion_matrix(model_ft, n_classe, dataloaders):
@@ -214,8 +217,8 @@ def confusion_matrix(model_ft, n_classe, dataloaders):
 
 def train_AlexNet_cv(dataset, n_epoch=10, n_classe=6, n_fold=5, deep_model=models.alexnet, pretrained=True):
 
-    subdataset = datasets_K_fold_CV(dataset, n_fold=n_fold,
-                                    transform_function=data_transforms)
+    subdataset = datasets_K_fold_CV(dataset, n_fold=n_fold)
+                                    #transform_function=data_transforms)
 
     list_acc = []
     list_mat = []
@@ -235,12 +238,12 @@ def train_AlexNet_cv(dataset, n_epoch=10, n_classe=6, n_fold=5, deep_model=model
 if __name__ == '__main__':
     torch.cuda.empty_cache()
     N_FOLD = 5
-    N_EPOCH = 15
+    N_EPOCH = 2
 
     path = "C:/Users/OrdiPaul/Documents/Mines Nancy/Projet/Projet3A_wastesorting/dataset/"
     # it seems that it is better with the same transformation for all than with a data augmentation on the training set
-    image_datasets = datasets.ImageFolder(path)
-                                          #transform=data_transforms['val'])
+    image_datasets = datasets.ImageFolder(path,
+                                          transform=data_transforms['val'])
     class_names = image_datasets.classes
     n_classe = len(class_names)
 
@@ -255,7 +258,7 @@ if __name__ == '__main__':
     print("Total confusion matrix : \n", total_conf_mat)
 
     plt.figure(0)
-    plt.title("AlexNet total confusion matrix")
+    plt.title("Total confusion matrix")
     plot_conf_matrix = sns.heatmap(normed_TCM, annot=total_conf_mat, fmt="d", cmap='Blues',
                      xticklabels=class_names, yticklabels=class_names)
     plt.xlabel('Predicted Class')
