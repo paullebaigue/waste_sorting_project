@@ -2,20 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ee54eac4-ce16-4af9-8ae6-54ec316d9460" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../genealogie/.idea/libraries/R_User_Library.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../genealogie/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../genealogie/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../genealogie/extraction_csv.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../machine_learning_courses/.idea/libraries/R_User_Library.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../machine_learning_courses/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../machine_learning_courses/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../machine_learning_courses/TD2_ML.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../politique_monetaire/.idea/libraries/R_User_Library.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../politique_monetaire/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../politique_monetaire/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../politique_monetaire/.idea/politique_monetaire.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../politique_monetaire/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../politique_monetaire/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../politique_monetaire/plot_ISLM.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/waste_sorting.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/waste_sorting.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elbowplot.py" beforeDir="false" afterPath="$PROJECT_DIR$/Elbowplot.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/alexnet_cv.py" beforeDir="false" afterPath="$PROJECT_DIR$/alexnet_cv.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cross_V.py" beforeDir="false" afterPath="$PROJECT_DIR$/cross_V.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deep_learning_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/deep_learning_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/image_SVM_classifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/image_SVM_classifier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/learning_descriptors" beforeDir="false" afterPath="$PROJECT_DIR$/learning_descriptors" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/new_programdata/resize_image_file.py" beforeDir="false" afterPath="$PROJECT_DIR$/new_programdata/resize_image_file.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pytorch_test_cnn_classifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/pytorch_test_cnn_classifier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/torch_alexnet.py" beforeDir="false" afterPath="$PROJECT_DIR$/torch_alexnet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/torch_resnet18.py" beforeDir="false" afterPath="$PROJECT_DIR$/torch_resnet18.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tuto_pytorch.py" beforeDir="false" afterPath="$PROJECT_DIR$/tuto_pytorch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SVMandDescrptors/Descriptors.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SVMandDescrptors/K_means.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SVMandDescrptors/Results_visualization.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SVMandDescrptors/SVM_models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gonflement_olivier.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gonflement_olivier_propre.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,61 +37,76 @@
     <session id="-2010357339">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="51" />
+          <entry key="project.closed" value="97" />
+          <entry key="project.open.time.0" value="1" />
+          <entry key="project.open.time.1" value="7" />
           <entry key="project.open.time.109" value="1" />
           <entry key="project.open.time.11" value="3" />
           <entry key="project.open.time.14" value="2" />
+          <entry key="project.open.time.18" value="1" />
           <entry key="project.open.time.19" value="1" />
+          <entry key="project.open.time.2" value="5" />
           <entry key="project.open.time.21" value="1" />
-          <entry key="project.open.time.22" value="2" />
-          <entry key="project.open.time.23" value="1" />
+          <entry key="project.open.time.22" value="3" />
+          <entry key="project.open.time.23" value="2" />
           <entry key="project.open.time.24" value="3" />
-          <entry key="project.open.time.25" value="9" />
+          <entry key="project.open.time.25" value="10" />
           <entry key="project.open.time.26" value="2" />
           <entry key="project.open.time.27" value="1" />
-          <entry key="project.open.time.29" value="1" />
-          <entry key="project.open.time.3" value="1" />
+          <entry key="project.open.time.28" value="1" />
+          <entry key="project.open.time.29" value="2" />
+          <entry key="project.open.time.3" value="8" />
           <entry key="project.open.time.30" value="2" />
-          <entry key="project.open.time.31" value="1" />
+          <entry key="project.open.time.31" value="2" />
           <entry key="project.open.time.32" value="3" />
-          <entry key="project.open.time.33" value="1" />
+          <entry key="project.open.time.33" value="2" />
           <entry key="project.open.time.34" value="2" />
           <entry key="project.open.time.35" value="1" />
-          <entry key="project.open.time.36" value="3" />
+          <entry key="project.open.time.36" value="4" />
           <entry key="project.open.time.38" value="2" />
-          <entry key="project.open.time.39" value="3" />
-          <entry key="project.open.time.40" value="1" />
+          <entry key="project.open.time.39" value="4" />
+          <entry key="project.open.time.4" value="2" />
+          <entry key="project.open.time.40" value="2" />
           <entry key="project.open.time.41" value="2" />
-          <entry key="project.open.time.44" value="1" />
+          <entry key="project.open.time.42" value="1" />
+          <entry key="project.open.time.44" value="2" />
           <entry key="project.open.time.45" value="1" />
-          <entry key="project.open.time.46" value="2" />
+          <entry key="project.open.time.46" value="3" />
+          <entry key="project.open.time.49" value="1" />
+          <entry key="project.open.time.5" value="2" />
+          <entry key="project.open.time.52" value="1" />
           <entry key="project.open.time.53" value="1" />
           <entry key="project.open.time.56" value="1" />
-          <entry key="project.open.time.6" value="1" />
+          <entry key="project.open.time.6" value="2" />
+          <entry key="project.open.time.60" value="1" />
           <entry key="project.open.time.62" value="2" />
+          <entry key="project.open.time.71" value="1" />
           <entry key="project.open.time.72" value="1" />
+          <entry key="project.open.time.8" value="4" />
           <entry key="project.open.time.80" value="1" />
-          <entry key="project.open.time.9" value="2" />
-          <entry key="project.opened" value="62" />
+          <entry key="project.open.time.81" value="1" />
+          <entry key="project.open.time.9" value="3" />
+          <entry key="project.open.time.90" value="1" />
+          <entry key="project.opened" value="113" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="learning_descriptors" value="4" />
-          <entry key="py" value="106" />
+          <entry key="learning_descriptors" value="8" />
+          <entry key="py" value="209" />
           <entry key="step_by_step" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="112" />
+          <entry key="Python" value="219" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="Python Console" value="2709" />
-          <entry key="learning_descriptors" value="6916" />
-          <entry key="py" value="21846" />
+          <entry key="Python Console" value="2956" />
+          <entry key="learning_descriptors" value="6941" />
+          <entry key="py" value="37181" />
           <entry key="step_by_step" value="869" />
           <entry key="txt" value="37" />
         </counts>
@@ -89,63 +114,10 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="37" />
-          <entry key="Python" value="32340" />
+          <entry key="Python" value="47947" />
         </counts>
       </usages-collector>
     </session>
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/image_SVM_classifier.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="395">
-              <caret line="447" column="6" selection-start-line="447" selection-start-column="6" selection-end-line="447" selection-end-column="6" />
-              <folding>
-                <element signature="e#0#100#0" expanded="true" />
-                <marker date="1549756413237" expanded="true" signature="13412:14274" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cross_V.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1762">
-              <caret line="133" column="85" selection-start-line="133" selection-start-column="85" selection-end-line="133" selection-end-column="85" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://C:/ProgramData/Anaconda3/Lib/site-packages/matplotlib/pyplot.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="2700" selection-start-line="2700" selection-end-line="2700" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Documents/Mines Nancy/Projet/Projet3A_wastesorting/test_apprentissage auto/TP6_exercice1_eleves.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="94" column="54" selection-start-line="94" selection-start-column="54" selection-end-line="94" selection-end-column="54" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Documents/Mines Nancy/Projet/Projet3A_wastesorting/test_apprentissage auto/TP6_exercice2_eleves.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="15" column="76" lean-forward="true" selection-start-line="15" selection-start-column="76" selection-end-line="15" selection-end-column="76" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -156,18 +128,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>epo</find>
-      <find>class</find>
-      <find>KMeans</find>
-      <find>print</find>
-      <find>batch</find>
-      <find>iter</find>
-      <find>dataloaderiter</find>
-      <find>plt.figu</find>
-      <find>imshow</find>
-      <find>dataset_sizes</find>
-      <find>data_tr</find>
-      <find>data.da</find>
       <find>target_transform</find>
       <find>os.</find>
       <find>epoch_list</find>
@@ -186,6 +146,18 @@
       <find>descriptors_CV</find>
       <find>score_CV</find>
       <find>X_im</find>
+      <find>CV</find>
+      <find>sns</find>
+      <find>plot</find>
+      <find>idx_descriptors_train</find>
+      <find>kmeans_cv</find>
+      <find>bat</find>
+      <find>data</find>
+      <find>res</find>
+      <find>sched</find>
+      <find>np.sum</find>
+      <find>np.s</find>
+      <find>torch.sum</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -204,7 +176,6 @@
         <option value="$USER_HOME$/Documents/Mines Nancy/Projet/Projet3A_wastesorting/test_apprentissage auto/TP6_code.py" />
         <option value="$PROJECT_DIR$/deep_learning_test.py" />
         <option value="$USER_HOME$/Documents/Mines Nancy/Projet/Projet3A_wastesorting/test_apprentissage auto/TP6_exercice2_eleves.py" />
-        <option value="$PROJECT_DIR$/learning_descriptors" />
         <option value="$PROJECT_DIR$/step_by_step" />
         <option value="$PROJECT_DIR$/tuto_pytorch.py" />
         <option value="$USER_HOME$/Anaconda3/Lib/site-packages/sklearn/utils/multiclass.py" />
@@ -212,25 +183,50 @@
         <option value="$PROJECT_DIR$/../politique_monetaire/plot_ISLM.py" />
         <option value="$PROJECT_DIR$/torch_resnet18.py" />
         <option value="$PROJECT_DIR$/test_decripteurs.py" />
-        <option value="$PROJECT_DIR$/Elbowplot.py" />
-        <option value="$PROJECT_DIR$/torch_alexnet.py" />
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/pytorch_test_cnn_classifier.py" />
+        <option value="$PROJECT_DIR$/gonflement_olivier.py" />
+        <option value="$PROJECT_DIR$/gonflement_olivier_propre.py" />
+        <option value="$PROJECT_DIR$/Color_Maps.py" />
         <option value="$PROJECT_DIR$/alexnet_cv.py" />
         <option value="$PROJECT_DIR$/cross_V.py" />
+        <option value="$PROJECT_DIR$/torch_alexnet.py" />
+        <option value="$PROJECT_DIR$/draft.py" />
+        <option value="$PROJECT_DIR$/Elbowplot.py" />
+        <option value="$PROJECT_DIR$/K_means.py" />
+        <option value="$PROJECT_DIR$/Results_visualization.py" />
+        <option value="$PROJECT_DIR$/Descriptors.py" />
+        <option value="$PROJECT_DIR$/Cross_Validation.py" />
+        <option value="$PROJECT_DIR$/learning_descriptors" />
         <option value="$PROJECT_DIR$/image_SVM_classifier.py" />
+        <option value="$PROJECT_DIR$/SVMandDescrptors/Results_visualization.py" />
+        <option value="$PROJECT_DIR$/SVM_models.py" />
+        <option value="$PROJECT_DIR$/venv/Lib/site-packages/torch/utils/data/_utils/worker.py" />
+        <option value="$PROJECT_DIR$/DNN/torch_alexnet.py" />
+        <option value="$PROJECT_DIR$/DNN/alexnet_cv.py" />
+        <option value="$PROJECT_DIR$/Visualization/DNN_visualization.py" />
+        <option value="$PROJECT_DIR$/DNN/DNN_visualization.py" />
+        <option value="$PROJECT_DIR$/DNN/train_DNN.py" />
+        <option value="$PROJECT_DIR$/DNN/DNN_models.py" />
+        <option value="$PROJECT_DIR$/train_SVM.py" />
+        <option value="$PROJECT_DIR$/SVMandDescriptors/SVM_models.py" />
+        <option value="$PROJECT_DIR$/SVMandDescriptors/Descriptors.py" />
+        <option value="$PROJECT_DIR$/SVMandDescriptors/K_means.py" />
+        <option value="$PROJECT_DIR$/SVMandDescriptors/train_SVM.py" />
+        <option value="$PROJECT_DIR$/SVMandDescriptors/Results_visualization.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
-    <option name="width" value="353" />
+    <option name="x" value="676" />
+    <option name="width" value="697" />
     <option name="height" value="735" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <showMembers ProjectPane="true" />
+      <sortByType ProjectPane="false" />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
@@ -242,6 +238,16 @@
               <item name="waste_sorting" type="b2602c69:ProjectViewProjectNode" />
               <item name="waste_sorting" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="waste_sorting" type="b2602c69:ProjectViewProjectNode" />
+              <item name="waste_sorting" type="462c0819:PsiDirectoryNode" />
+              <item name="DNN" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="waste_sorting" type="b2602c69:ProjectViewProjectNode" />
+              <item name="waste_sorting" type="462c0819:PsiDirectoryNode" />
+              <item name="SVMandDescriptors" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -249,8 +255,8 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$USER_HOME$/Documents/Mines Nancy/Projet/Projet3A_wastesorting/test_apprentissage auto/TP6_exercice2_eleves.py" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/new_programdata" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -258,6 +264,15 @@
         <option name="myUseModuleSdk" value="true" />
       </console-settings>
     </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\OrdiPaul\PycharmProjects\waste_sorting\SVMandDescriptors" />
+      <recent name="C:\Users\OrdiPaul\PycharmProjects\waste_sorting\DNN" />
+      <recent name="C:\Users\OrdiPaul\PycharmProjects\waste_sorting\SVMandDescrptors" />
+      <recent name="C:\Users\OrdiPaul\PycharmProjects\waste_sorting\Reports and documentation" />
+      <recent name="C:\Users\OrdiPaul\PycharmProjects\waste_sorting" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -271,8 +286,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.image_SVM_classifier">
-    <configuration name="Elbowplot" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.train_SVM">
+    <configuration name="DNN_models" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="waste_sorting" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -280,11 +295,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/DNN" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Elbowplot.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DNN/DNN_models.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -293,7 +308,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="alexnet_cv" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="alexnet_cv (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="waste_sorting" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -301,11 +316,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/DNN" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/alexnet_cv.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DNN/alexnet_cv.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -314,7 +329,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="cross_V" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="alexnet_cv" type="PythonConfigurationType" factoryName="Python">
       <module name="waste_sorting" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -326,28 +341,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/cross_V.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="image_SVM_classifier" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="waste_sorting" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/image_SVM_classifier.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\OrdiPaul\PycharmProjects\waste_sorting\DNN\alexnet_cv.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -377,7 +371,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="torch_alexnet" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="torch_alexnet (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="waste_sorting" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -385,11 +379,53 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/DNN" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/torch_alexnet.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DNN/torch_alexnet.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="train_DNN" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="waste_sorting" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/DNN" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DNN/train_DNN.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="train_SVM" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="waste_sorting" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SVMandDescriptors" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SVMandDescriptors/train_SVM.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -400,19 +436,20 @@
     </configuration>
     <list>
       <item itemvalue="Python.test" />
-      <item itemvalue="Python.image_SVM_classifier" />
-      <item itemvalue="Python.cross_V" />
-      <item itemvalue="Python.torch_alexnet" />
-      <item itemvalue="Python.Elbowplot" />
       <item itemvalue="Python.alexnet_cv" />
+      <item itemvalue="Python.DNN_models" />
+      <item itemvalue="Python.torch_alexnet (1)" />
+      <item itemvalue="Python.alexnet_cv (1)" />
+      <item itemvalue="Python.train_DNN" />
+      <item itemvalue="Python.train_SVM" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.image_SVM_classifier" />
-        <item itemvalue="Python.alexnet_cv" />
-        <item itemvalue="Python.torch_alexnet" />
-        <item itemvalue="Python.Elbowplot" />
-        <item itemvalue="Python.cross_V" />
+        <item itemvalue="Python.train_SVM" />
+        <item itemvalue="Python.train_DNN" />
+        <item itemvalue="Python.DNN_models" />
+        <item itemvalue="Python.alexnet_cv (1)" />
+        <item itemvalue="Python.torch_alexnet (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -475,20 +512,20 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info id="Structure" order="0" sideWeight="0.6233766" side_tool="true" weight="0.12481089" />
+      <window_info id="Structure" order="0" sideWeight="0.19417475" side_tool="true" weight="0.12102874" />
       <window_info id="Favorites" order="1" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="2" sideWeight="0.37662336" visible="true" weight="0.15128593" />
+      <window_info active="true" content_ui="combo" id="Project" order="2" sideWeight="0.80582523" visible="true" weight="0.25037822" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3295082" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.63398695" weight="0.4819672" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.22459017" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.66717094" weight="0.33934426" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39836067" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.3295082" />
-      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49848714" weight="0.32786885" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49848714" weight="0.32459018" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.21158691" side_tool="true" weight="0.25594565" />
-      <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.79576397" weight="0.38032788" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.21803279" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.4977307" weight="0.32786885" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.698941" weight="0.26885247" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.33282906" side_tool="true" weight="0.3409836" />
+      <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.79576397" weight="0.26065573" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -496,20 +533,20 @@
       <window_info anchor="right" id="R Packages" order="4" />
     </layout>
     <layout-to-restore>
-      <window_info id="Structure" order="0" sideWeight="0.6233766" side_tool="true" weight="0.12481089" />
+      <window_info id="Structure" order="0" sideWeight="0.19417475" side_tool="true" weight="0.12102874" />
       <window_info id="Favorites" order="1" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="2" sideWeight="0.37662336" visible="true" weight="0.1452345" />
+      <window_info content_ui="combo" id="Project" order="2" sideWeight="0.80582523" visible="true" weight="0.25037822" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3295082" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.8600605" weight="0.3704918" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.22459017" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.66717094" visible="true" weight="0.33934426" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39836067" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.3295082" />
-      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49848714" weight="0.32786885" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49848714" weight="0.32459018" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.13993949" side_tool="true" weight="0.3442623" />
-      <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.79576397" weight="0.38032788" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.21803279" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.4977307" weight="0.32786885" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.698941" weight="0.26885247" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.33282906" side_tool="true" weight="0.3409836" />
+      <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.79576397" weight="0.26065573" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -525,214 +562,45 @@
     <MESSAGE value="To structure" />
     <option name="LAST_COMMIT_MESSAGE" value="To structure" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/numpy/core/shape_base.py" />
-    <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/sklearn/utils/validation.py" />
-    <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/sklearn/cluster/k_means_.py" />
-    <entry file="file://$USER_HOME$/Documents/Mines Nancy/Projet/Projet3A_wastesorting/test_apprentissage auto/TP6_code.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3">
-          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/step_by_step" />
-    <entry file="file://$PROJECT_DIR$/path_directory_os.py" />
-    <entry file="file://$PROJECT_DIR$/tuto_pytorch.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="935">
-          <caret line="59" column="39" selection-start-line="59" selection-start-column="39" selection-end-line="59" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/sklearn/svm/base.py" />
-    <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/sklearn/metrics/classification.py" />
-    <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/sklearn/utils/multiclass.py" />
-    <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/matplotlib/figure.py" />
-    <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/matplotlib/axes/_subplots.py" />
-    <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/matplotlib/pyplot.py" />
-    <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/matplotlib/tight_layout.py" />
-    <entry file="file://$PROJECT_DIR$/new_programdata/resize_image_file.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../politique_monetaire/plot_ISLM.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="61" column="28" lean-forward="true" selection-start-line="61" selection-start-column="28" selection-end-line="61" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/ProgramData/Anaconda3/Lib/site-packages/torch/nn/modules/module.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="534" selection-start-line="534" selection-end-line="534" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/torch_resnet18.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2857">
-          <caret line="208" column="44" selection-start-line="208" selection-start-column="44" selection-end-line="208" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../information_theory/TD1_information_theory.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://C:/ProgramData/Anaconda3/Lib/site-packages/torchvision/datasets/folder.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
-          <caret line="89" column="48" selection-start-line="89" selection-start-column="32" selection-end-line="89" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://C:/ProgramData/Anaconda3/Lib/site-packages/torchvision/transforms/transforms.py" />
+    <entry file="file://C:/ProgramData/Anaconda3/Lib/site-packages/numpy/core/fromnumeric.py" />
+    <entry file="file://C:/ProgramData/Anaconda3/Lib/site-packages/matplotlib/colorbar.py" />
+    <entry file="file://C:/ProgramData/Anaconda3/Lib/site-packages/sklearn/metrics/pairwise.py" />
+    <entry file="file://C:/ProgramData/Anaconda3/Lib/site-packages/matplotlib/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/../test_python/function_arguments.py" />
+    <entry file="file://$PROJECT_DIR$/../firstproject/test_project.py" />
+    <entry file="file://$PROJECT_DIR$/gonflement_olivier.py" />
+    <entry file="file://$PROJECT_DIR$/gonflement_olivier_propre.py" />
     <entry file="file://$USER_HOME$/.PyCharmCE2018.2/system/python_stubs/-1803482530/builtins.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4573">
-          <caret line="269" column="7" selection-start-line="269" selection-start-column="7" selection-end-line="269" selection-end-column="7" />
+        <state relative-caret-position="155">
+          <caret line="352" column="65" selection-start-line="352" selection-start-column="65" selection-end-line="352" selection-end-column="65" />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/ProgramData/Anaconda3/Lib/site-packages/torch/_six.py">
+    <entry file="file://$PROJECT_DIR$/../cphnano/PYTH_20180705_liste_good_spectrum.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="47" column="7" selection-start-line="47" selection-start-column="7" selection-end-line="47" selection-end-column="7" />
+        <state relative-caret-position="1751">
+          <caret line="103" lean-forward="true" selection-start-line="103" selection-end-line="103" />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/ProgramData/Anaconda3/Lib/site-packages/torch/utils/data/dataloader.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
-          <caret line="222" column="18" selection-start-line="222" selection-start-column="18" selection-end-line="222" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.PyCharmCE2018.2/system/python_stubs/-1803482530/torch/_C/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="526" column="14" selection-start-line="526" selection-start-column="10" selection-end-line="526" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/ProgramData/Anaconda3/Lib/site-packages/torch/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="83" column="12" selection-start-line="83" selection-start-column="12" selection-end-line="83" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/ProgramData/Anaconda3/Lib/site-packages/torchvision/transforms/transforms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="356" selection-start-line="356" selection-end-line="356" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Elbowplot.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="27" column="12" selection-start-line="27" selection-start-column="12" selection-end-line="27" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/deep_learning_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="13" column="41" selection-start-line="13" selection-start-column="41" selection-end-line="13" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/ProgramData/Anaconda3/Lib/site-packages/numpy/core/fromnumeric.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="1929" selection-start-line="1929" selection-end-line="1929" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/ProgramData/Anaconda3/Lib/site-packages/matplotlib/colorbar.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1853">
-          <caret line="128" selection-start-line="128" selection-end-line="128" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/ProgramData/Anaconda3/Lib/site-packages/sklearn/metrics/pairwise.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="14739">
-          <caret line="885" column="38" selection-start-line="885" selection-start-column="38" selection-end-line="885" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1479">
-          <caret line="91" column="9" selection-start-line="91" selection-start-column="9" selection-end-line="91" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/torch_alexnet.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3366">
-          <caret line="207" column="29" selection-start-line="207" selection-start-column="29" selection-end-line="207" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pytorch_test_cnn_classifier.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="42" selection-start-line="42" selection-end-line="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/alexnet_cv.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="242" column="90" selection-start-line="242" selection-start-column="90" selection-end-line="242" selection-end-column="90" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_decripteurs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="77" selection-start-line="71" selection-start-column="27" selection-end-line="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/learning_descriptors">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1904">
-          <caret line="132" lean-forward="true" selection-start-line="132" selection-end-line="132" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/ProgramData/Anaconda3/Lib/site-packages/matplotlib/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
-          <caret line="1809" selection-start-line="1809" selection-end-line="1809" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/ProgramData/Anaconda3/Lib/site-packages/matplotlib/pyplot.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="2700" selection-start-line="2700" selection-end-line="2700" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cross_V.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1762">
-          <caret line="133" column="85" selection-start-line="133" selection-start-column="85" selection-end-line="133" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://C:/ProgramData/Anaconda3/Lib/site-packages/matplotlib/pyplot.py" />
     <entry file="file://$USER_HOME$/Documents/Mines Nancy/Projet/Projet3A_wastesorting/test_apprentissage auto/TP6_exercice1_eleves.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
+        <state relative-caret-position="1496">
           <caret line="94" column="54" selection-start-line="94" selection-start-column="54" selection-end-line="94" selection-end-column="54" />
         </state>
       </provider>
@@ -740,18 +608,138 @@
     <entry file="file://$USER_HOME$/Documents/Mines Nancy/Projet/Projet3A_wastesorting/test_apprentissage auto/TP6_exercice2_eleves.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
-          <caret line="15" column="76" lean-forward="true" selection-start-line="15" selection-start-column="76" selection-end-line="15" selection-end-column="76" />
+          <caret line="15" column="76" selection-start-line="15" selection-start-column="76" selection-end-line="15" selection-end-column="76" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/image_SVM_classifier.py">
+    <entry file="file://$PROJECT_DIR$/../data_science_example/pandas_tuto_1.py" />
+    <entry file="file://$PROJECT_DIR$/test_decripteurs.py" />
+    <entry file="file://$PROJECT_DIR$/deep_learning_test.py" />
+    <entry file="file://$PROJECT_DIR$/tuto_pytorch.py" />
+    <entry file="file://$PROJECT_DIR$/torch_resnet18.py" />
+    <entry file="file://$PROJECT_DIR$/pytorch_test_cnn_classifier.py" />
+    <entry file="file://$PROJECT_DIR$/test.py" />
+    <entry file="file://$PROJECT_DIR$/new_programdata/resize_image_file.py" />
+    <entry file="file://$PROJECT_DIR$/Color_Maps.py" />
+    <entry file="file://$PROJECT_DIR$/Elbowplot.py" />
+    <entry file="file://$PROJECT_DIR$/draft.py" />
+    <entry file="file://$PROJECT_DIR$/SVMandDescrptors/Descriptors.py" />
+    <entry file="file://$PROJECT_DIR$/SVMandDescrptors/K_means.py" />
+    <entry file="file://$PROJECT_DIR$/Cross_Validation.py" />
+    <entry file="file://$PROJECT_DIR$/learning_descriptors" />
+    <entry file="file://$PROJECT_DIR$/image_SVM_classifier.py" />
+    <entry file="file://$PROJECT_DIR$/SVMandDescrptors/Results_visualization.py" />
+    <entry file="file://$PROJECT_DIR$/SVMandDescrptors/SVM_models.py" />
+    <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/torch/optim/lr_scheduler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="447" column="6" selection-start-line="447" selection-start-column="6" selection-end-line="447" selection-end-column="6" />
-          <folding>
-            <element signature="e#0#100#0" expanded="true" />
-            <marker date="1549756413237" expanded="true" signature="13412:14274" ph="..." />
-          </folding>
+        <state relative-caret-position="-102" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/torch/cuda/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1099">
+          <caret line="162" selection-start-line="162" selection-end-line="162" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/torch/utils/data/_utils/worker.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="100" column="77" lean-forward="true" selection-start-line="100" selection-start-column="77" selection-end-line="100" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DNN/torch_alexnet.py" />
+    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/torch/utils/data/dataloader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="545" column="17" lean-forward="true" selection-start-line="545" selection-start-column="17" selection-end-line="545" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DNN/alexnet_cv.py" />
+    <entry file="file://$PROJECT_DIR$/cross_V.py" />
+    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/sklearn/model_selection/_split.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="1997" column="4" selection-start-line="1997" selection-start-column="4" selection-end-line="1997" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/sklearn/utils/validation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="520" selection-start-line="520" selection-end-line="520" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/sklearn/cluster/k_means_.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="26095">
+          <caret line="1557" column="35" selection-start-line="1557" selection-start-column="35" selection-end-line="1557" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2018.2/system/python_stubs/-601431192/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="3677" column="8" selection-start-line="3677" selection-start-column="8" selection-end-line="3677" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SVMandDescriptors/SVM_models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="37" column="29" lean-forward="true" selection-start-line="37" selection-start-column="29" selection-end-line="37" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SVMandDescriptors/Descriptors.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1003">
+          <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SVMandDescriptors/K_means.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-50">
+          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SVMandDescriptors/Results_visualization.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1495">
+          <caret line="91" column="20" lean-forward="true" selection-start-line="91" selection-start-column="20" selection-end-line="91" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DNN/DNN_visualization.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="714">
+          <caret line="44" column="60" lean-forward="true" selection-start-line="44" selection-start-column="60" selection-end-line="44" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DNN/DNN_models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2413">
+          <caret line="22" column="58" selection-start-line="22" selection-start-column="58" selection-end-line="22" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DNN/train_DNN.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="45" column="33" lean-forward="true" selection-start-line="45" selection-start-column="33" selection-end-line="45" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SVMandDescriptors/train_SVM.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="21" column="64" lean-forward="true" selection-start-line="21" selection-start-column="64" selection-end-line="21" selection-end-column="64" />
         </state>
       </provider>
     </entry>
